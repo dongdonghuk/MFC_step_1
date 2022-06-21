@@ -41,7 +41,6 @@ void CSplitView_3::OnDraw(CDC* pDC)
 {
 	CMFCSplitScrollDoc* pDoc = GetDocument();
 	// TODO: 여기에 그리기 코드를 추가합니다.
-	CSplitView::OnDraw(pDC);
 
 	Graphics g(pDC->m_hDC);
 
@@ -59,7 +58,7 @@ void CSplitView_3::OnDraw(CDC* pDC)
 
 	}
 
-
+	CSplitView::OnDraw(pDC);
 
 }
 
@@ -87,8 +86,10 @@ void CSplitView_3::Dump(CDumpContext& dc) const
 void CSplitView_3::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	CMFCSplitScrollDoc* pDoc = GetDocument();
 
 	CSplitView::OnLButtonDown(nFlags, point);
+	pDoc->m_nSelectedView = 3;
 }
 
 

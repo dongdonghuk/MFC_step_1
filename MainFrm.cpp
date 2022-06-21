@@ -102,6 +102,7 @@ BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT /*lpcs*/,
 
 	m_bViewsExist = TRUE;
 
+
 	return TRUE;
 }
 

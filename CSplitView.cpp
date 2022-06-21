@@ -44,16 +44,17 @@ void CSplitView::OnDraw(CDC* pDC)
 	CMFCSplitScrollDoc* pDoc = GetDocument();
 
 	
-	// TODO: 여기에 그리기 코드를 추가합니다.
+	Graphics g(pDC->m_hDC);
+
+
 	if (pDoc->m_pSelectedView == this) {
+
 		CRect rect;
 		GetClientRect(rect);
-		CPen pen(PS_SOLID, 10, RGB(255, 0, 0));
-		CPen* pOldPen = pDC->SelectObject(&pen);
+		Pen pen(Color(255, 0, 0), 5);
 
-		pDC->Rectangle(rect);
+		g.DrawRectangle(&pen, 0, 0, rect.Width(), rect.Height());
 
-		pDC->SelectObject(pOldPen);
 	}
 
 }
@@ -67,7 +68,7 @@ void CSplitView::AssertValid() const
 	CScrollView::AssertValid();
 }
 
-CMFCSplitScrollDoc* CSplitView::GetDocument() const // 디버그되지 않은 버전은 인라인으로 지정됩니다.
+CMFCSplitScrollDoc* CSplitView::GetDocument() const 
 {
 	ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(CMFCSplitScrollDoc)));
 	return (CMFCSplitScrollDoc*)m_pDocument;

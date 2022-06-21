@@ -20,6 +20,7 @@ public:
 // 작업입니다.
 public:
 	CScrollView* m_pSelectedView;
+	int m_nSelectedView;
 
 	CString m_ImgPath;
 
@@ -27,6 +28,8 @@ public:
 	Mat m_matImg_2;
 	Mat m_matImg_3;
 	Mat m_matImg_4;
+
+	Mat m_matTmp;
 
 // 재정의입니다.
 public:
