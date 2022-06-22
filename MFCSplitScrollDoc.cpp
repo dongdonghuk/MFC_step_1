@@ -33,7 +33,7 @@ CMFCSplitScrollDoc::CMFCSplitScrollDoc() noexcept
 {
 	// TODO: 여기에 일회성 생성 코드를 추가합니다.
 	m_nSelectedView = 1;
-
+	m_vMatImg.resize(5);
 }
 
 CMFCSplitScrollDoc::~CMFCSplitScrollDoc()
@@ -150,25 +150,8 @@ void CMFCSplitScrollDoc::OnImageLoad()
 	CFileDialog dlg(TRUE, NULL, NULL, OFN_HIDEREADONLY, szFilter);
 	if (IDOK == dlg.DoModal()) {
 
-		switch (m_nSelectedView)
-		{
-		case 1:
-			m_ImgPath = dlg.GetPathName();
-			m_matImg_1 = imread(std::string(CT2CA(m_ImgPath)));
-			break;
-		case 2:
-			m_ImgPath = dlg.GetPathName();
-			m_matImg_2 = imread(std::string(CT2CA(m_ImgPath)));
-			break;
-		case 3:
-			m_ImgPath = dlg.GetPathName();
-			m_matImg_3 = imread(std::string(CT2CA(m_ImgPath)));
-			break;
-		case 4:
-			m_ImgPath = dlg.GetPathName();
-			m_matImg_4 = imread(std::string(CT2CA(m_ImgPath)));
-			break;
-		}
+		m_ImgPath = dlg.GetPathName();
+		m_vMatImg[m_nSelectedView] = imread(std::string(CT2CA(m_ImgPath)));
 
 	}
 

@@ -24,12 +24,7 @@ public:
 
 	CString m_ImgPath;
 
-	Mat m_matImg_1;
-	Mat m_matImg_2;
-	Mat m_matImg_3;
-	Mat m_matImg_4;
-
-	Mat m_matTmp;
+	vector<Mat> m_vMatImg;
 
 // 재정의입니다.
 public:

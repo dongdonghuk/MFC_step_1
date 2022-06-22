@@ -43,15 +43,11 @@ void CSplitView_2::OnDraw(CDC* pDC)
 	// TODO: 여기에 그리기 코드를 추가합니다.
 	Graphics g(pDC->m_hDC);
 
-	//if (pDoc->m_img) {
-	//	g.DrawImage(pDoc->m_img, 300, 300, pDoc->m_img->GetWidth() / 5, pDoc->m_img->GetHeight() / 5);
-	//}
+	if (!(pDoc->m_vMatImg[2].empty())) {
+		cvtColor(pDoc->m_vMatImg[2], pDoc->m_vMatImg[2], COLOR_BGR2BGRA);
 
-	if (!(pDoc->m_matImg_2.empty())) {
-		cvtColor(pDoc->m_matImg_2, pDoc->m_matImg_2, COLOR_BGR2BGRA);
-
-		Bitmap bitmap((INT)pDoc->m_matImg_2.size().width, (INT)pDoc->m_matImg_2.size().height, (INT)pDoc->m_matImg_2.step,
-			PixelFormat32bppARGB, pDoc->m_matImg_2.data);
+		Bitmap bitmap((INT)pDoc->m_vMatImg[2].size().width, (INT)pDoc->m_vMatImg[2].size().height, (INT)pDoc->m_vMatImg[2].step,
+			PixelFormat32bppARGB, pDoc->m_vMatImg[2].data);
 
 		g.DrawImage(&bitmap, 0, 0, bitmap.GetWidth(), bitmap.GetHeight());
 
