@@ -45,6 +45,7 @@ void CSplitView_1::OnDraw(CDC* pDC)
 
 	Graphics g(pDC->m_hDC);
 
+
 	pDoc->m_vCvImg[1].DrawImage(g, this);
 
 

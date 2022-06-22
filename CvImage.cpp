@@ -5,6 +5,9 @@
 
 void CvImage::imread(CString imgPath) {
 	matImg = cv::imread(std::string(CT2CA(imgPath)));
+
+	pt = (0, 0);
+	dZoomRate = 1;
 }
 
 
@@ -12,8 +15,12 @@ void CvImage::DrawImage(Graphics& g, CWnd* cwnd) {
 
 	if (!(matImg.empty())) {
 
+		g.TranslateTransform(pt.x, pt.y);
+		g.ScaleTransform(dZoomRate, dZoomRate);
+
 		CRect rect;
 		cwnd->GetClientRect(rect);
+
 
 		float width = rect.Width(), height = rect.Height();
 		float rectRate = width / height;
@@ -40,9 +47,19 @@ void CvImage::DrawImage(Graphics& g, CWnd* cwnd) {
 		Bitmap bitmap((INT)matImg.size().width, (INT)matImg.size().height, matImg.step,
 			PixelFormat32bppARGB, matImg.data);
 
-		//g.DrawImage(&bitmap, 0, 0, bitmap.GetWidth(), bitmap.GetHeight());
 		g.DrawImage(&bitmap, rect.left, rect.top, (int)width, (int)height);
+	}
+}
 
+void CvImage::resize(CPoint& point) {
+
+	if (!(matImg.empty())) {
+		
+		dZoomRate += 0.05;
+		if (dZoomRate > 4) dZoomRate = 4;
+
+		pt.x = -point.x * (dZoomRate - 1);
+		pt.y = -point.y * (dZoomRate - 1);
 
 	}
 }

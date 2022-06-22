@@ -108,6 +108,12 @@ void CSplitView::OnLButtonDown(UINT nFlags, CPoint point)
 	CMFCSplitScrollDoc* pDoc = GetDocument();
 	pDoc->UpdateAllViews(NULL, HINT_SELECTED_VIEW, this);
 
+	if ((nFlags & MK_CONTROL) == MK_CONTROL) {
+
+		pDoc->m_vCvImg[pDoc->m_nSelectedView].resize(point);
+
+	}
+
 	CScrollView::OnLButtonDown(nFlags, point);
 }
 

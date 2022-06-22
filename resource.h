@@ -33,13 +33,20 @@
 #define IDM_IMG_FLIP_UD                 32795
 #define ID_FLIP_LF                      32796
 #define ID_FLIP_UD                      32797
+#define IDM_ROTATE_LEFT                 32798
+#define IDM_ROTATE_RIGHT                32799
+#define IDM_IMG_RESIZE                  32800
+#define ID_ROTATE_LEFT                  32801
+#define ID_ROTATE_RIGHT                 32802
+#define IDM_FLIP_LF                     32803
+#define IDM_FLIP_UD                     32804
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        310
-#define _APS_NEXT_COMMAND_VALUE         32798
+#define _APS_NEXT_COMMAND_VALUE         32805
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
