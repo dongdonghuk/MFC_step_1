@@ -44,11 +44,7 @@ void CSplitView_3::OnDraw(CDC* pDC)
 
 	Graphics g(pDC->m_hDC);
 
-	if (!(pDoc->m_vMatImg[3].empty())) {
-
-		pDoc->m_vCvImg[3].DrawImage(g);
-
-	}
+	pDoc->m_vCvImg[3].DrawImage(g, this);
 
 	CSplitView::OnDraw(pDC);
 

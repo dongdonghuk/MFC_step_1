@@ -26,7 +26,6 @@ public:
 
 	CString m_ImgPath;
 
-	vector<Mat> m_vMatImg;
 	vector<CvImage> m_vCvImg;
 
 // 재정의입니다.

@@ -43,11 +43,7 @@ void CSplitView_2::OnDraw(CDC* pDC)
 	// TODO: 여기에 그리기 코드를 추가합니다.
 	Graphics g(pDC->m_hDC);
 
-	if (!(pDoc->m_vMatImg[2].empty())) {
-
-		pDoc->m_vCvImg[2].DrawImage(g);
-
-	}
+	pDoc->m_vCvImg[2].DrawImage(g, this);
 
 	CSplitView::OnDraw(pDC);
 

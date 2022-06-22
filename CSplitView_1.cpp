@@ -45,15 +45,10 @@ void CSplitView_1::OnDraw(CDC* pDC)
 
 	Graphics g(pDC->m_hDC);
 
-	if (!(pDoc->m_vMatImg[1].empty())) {
+	pDoc->m_vCvImg[1].DrawImage(g, this);
 
-		pDoc->m_vCvImg[1].DrawImage(g);
-		
-	}
 
 	CSplitView::OnDraw(pDC);
-
-
 }
 
 

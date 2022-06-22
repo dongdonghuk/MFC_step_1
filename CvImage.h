@@ -8,5 +8,5 @@ public:
 
 public:
 	void imread(CString imgPath);
-	void CvImage::DrawImage(Graphics& g);
+	void CvImage::DrawImage(Graphics& g, CWnd* cwnd);
 };

@@ -35,7 +35,6 @@ CMFCSplitScrollDoc::CMFCSplitScrollDoc() noexcept
 {
 	// TODO: 여기에 일회성 생성 코드를 추가합니다.
 	m_nSelectedView = 1;
-	m_vMatImg.resize(5);
 	m_vCvImg.resize(5);
 }
 
@@ -154,7 +153,6 @@ void CMFCSplitScrollDoc::OnImageLoad()
 	if (IDOK == dlg.DoModal()) {
 
 		m_ImgPath = dlg.GetPathName();
-		m_vMatImg[m_nSelectedView] = imread(std::string(CT2CA(m_ImgPath)));
 		m_vCvImg[m_nSelectedView].imread(m_ImgPath);
 
 	}
