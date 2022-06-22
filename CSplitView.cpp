@@ -7,6 +7,7 @@
 #include "MFCSplitScrollDoc.h"
 
 
+
 // CSplitView
 
 IMPLEMENT_DYNCREATE(CSplitView, CScrollView)

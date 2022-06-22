@@ -195,6 +195,7 @@
     <ClInclude Include="CSplitView_2.h" />
     <ClInclude Include="CSplitView_3.h" />
     <ClInclude Include="CSplitView_4.h" />
+    <ClInclude Include="CvImage.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MFCSplitScroll.h" />
@@ -211,6 +212,7 @@
     <ClCompile Include="CSplitView_2.cpp" />
     <ClCompile Include="CSplitView_3.cpp" />
     <ClCompile Include="CSplitView_4.cpp" />
+    <ClCompile Include="CvImage.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MFCSplitScroll.cpp" />
     <ClCompile Include="MFCSplitScrollDoc.cpp" />

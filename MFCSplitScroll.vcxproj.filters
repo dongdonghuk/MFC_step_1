@@ -57,6 +57,9 @@
     <ClInclude Include="CSplitView_4.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CvImage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFCSplitScroll.cpp">
@@ -90,6 +93,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CSplitView_4.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CvImage.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

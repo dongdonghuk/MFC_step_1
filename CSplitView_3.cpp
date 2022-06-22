@@ -45,12 +45,8 @@ void CSplitView_3::OnDraw(CDC* pDC)
 	Graphics g(pDC->m_hDC);
 
 	if (!(pDoc->m_vMatImg[3].empty())) {
-		cvtColor(pDoc->m_vMatImg[3], pDoc->m_vMatImg[3], COLOR_BGR2BGRA);
 
-		Bitmap bitmap((INT)pDoc->m_vMatImg[3].size().width, (INT)pDoc->m_vMatImg[3].size().height, (INT)pDoc->m_vMatImg[3].step,
-			PixelFormat32bppARGB, pDoc->m_vMatImg[3].data);
-
-		g.DrawImage(&bitmap, 0, 0, bitmap.GetWidth(), bitmap.GetHeight());
+		pDoc->m_vCvImg[3].DrawImage(g);
 
 	}
 

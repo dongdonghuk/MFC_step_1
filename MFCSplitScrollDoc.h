@@ -4,6 +4,8 @@
 
 
 #pragma once
+#include "CvImage.h"
+
 
 #define HINT_SELECTED_VIEW	100
 
@@ -25,6 +27,7 @@ public:
 	CString m_ImgPath;
 
 	vector<Mat> m_vMatImg;
+	vector<CvImage> m_vCvImg;
 
 // 재정의입니다.
 public:

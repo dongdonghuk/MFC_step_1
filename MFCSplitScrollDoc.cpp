@@ -4,6 +4,7 @@
 
 #include "pch.h"
 #include "framework.h"
+
 // SHARED_HANDLERS는 미리 보기, 축소판 그림 및 검색 필터 처리기를 구현하는 ATL 프로젝트에서 정의할 수 있으며
 // 해당 프로젝트와 문서 코드를 공유하도록 해 줍니다.
 #ifndef SHARED_HANDLERS
@@ -11,6 +12,7 @@
 #endif
 
 #include "MFCSplitScrollDoc.h"
+
 
 #include <propkey.h>
 
@@ -34,6 +36,7 @@ CMFCSplitScrollDoc::CMFCSplitScrollDoc() noexcept
 	// TODO: 여기에 일회성 생성 코드를 추가합니다.
 	m_nSelectedView = 1;
 	m_vMatImg.resize(5);
+	m_vCvImg.resize(5);
 }
 
 CMFCSplitScrollDoc::~CMFCSplitScrollDoc()
@@ -152,6 +155,7 @@ void CMFCSplitScrollDoc::OnImageLoad()
 
 		m_ImgPath = dlg.GetPathName();
 		m_vMatImg[m_nSelectedView] = imread(std::string(CT2CA(m_ImgPath)));
+		m_vCvImg[m_nSelectedView].imread(m_ImgPath);
 
 	}
 
