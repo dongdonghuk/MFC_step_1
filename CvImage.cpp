@@ -47,7 +47,7 @@ void CvImage::DrawImage(Graphics& g, CWnd* cwnd) {
 		Bitmap bitmap((INT)matImg.size().width, (INT)matImg.size().height, matImg.step,
 			PixelFormat32bppARGB, matImg.data);
 
-		g.DrawImage(&bitmap, rect.left, rect.top, (int)width, (int)height);
+		g.DrawImage(&bitmap, rect.left, rect.top, rect.right, rect.bottom);
 	}
 }
 
@@ -56,13 +56,13 @@ void CvImage::resize(CPoint& point, short& zDelta) {
 	if (!(matImg.empty())) {
 
 		if (zDelta < 0) {
-			dZoomRate -= 0.05;
-			if (dZoomRate > 4) dZoomRate = 4;
+			dZoomRate = 0.05;
+			if (dZoomRate < 0.5) dZoomRate = 0.5;
 		}
 
 		else {
 			dZoomRate += 0.05;
-			if (dZoomRate < 0.5) dZoomRate = 0.5;
+			if (dZoomRate > 4) dZoomRate = 4;
 		}
 
 		pt.x = -point.x * (dZoomRate - 1);

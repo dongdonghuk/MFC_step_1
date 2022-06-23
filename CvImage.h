@@ -5,7 +5,7 @@ class CvImage
 public:
 	Mat matImg;
 	CPoint pt;
-	REAL dZoomRate;
+	double dZoomRate;
 
 
 public:

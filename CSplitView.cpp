@@ -134,6 +134,7 @@ BOOL CSplitView::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 
 	CMFCSplitScrollDoc* pDoc = GetDocument();
 
+	ScreenToClient(&pt);
 
 	if ((nFlags & MK_CONTROL) == MK_CONTROL) {
 
