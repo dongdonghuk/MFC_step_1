@@ -51,12 +51,19 @@ void CvImage::DrawImage(Graphics& g, CWnd* cwnd) {
 	}
 }
 
-void CvImage::resize(CPoint& point) {
+void CvImage::resize(CPoint& point, short& zDelta) {
 
 	if (!(matImg.empty())) {
-		
-		dZoomRate += 0.05;
-		if (dZoomRate > 4) dZoomRate = 4;
+
+		if (zDelta < 0) {
+			dZoomRate -= 0.05;
+			if (dZoomRate > 4) dZoomRate = 4;
+		}
+
+		else {
+			dZoomRate += 0.05;
+			if (dZoomRate < 0.5) dZoomRate = 0.5;
+		}
 
 		pt.x = -point.x * (dZoomRate - 1);
 		pt.y = -point.y * (dZoomRate - 1);

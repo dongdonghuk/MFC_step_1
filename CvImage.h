@@ -5,11 +5,11 @@ class CvImage
 public:
 	Mat matImg;
 	CPoint pt;
-	double dZoomRate;
+	REAL dZoomRate;
 
 
 public:
 	void imread(CString imgPath);
 	void DrawImage(Graphics& g, CWnd* cwnd);
-	void resize(CPoint& pt);
+	void resize(CPoint& pt, short& zDelta);
 };

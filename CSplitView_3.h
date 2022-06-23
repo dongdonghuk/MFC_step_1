@@ -29,6 +29,7 @@ public:
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	virtual void OnUpdate(CView* /*pSender*/, LPARAM /*lHint*/, CObject* /*pHint*/);
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+	afx_msg BOOL OnMouseWheel(UINT nFlags, short zDelta, CPoint pt);
 };
 
 

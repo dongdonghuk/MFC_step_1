@@ -25,6 +25,8 @@ CSplitView::~CSplitView()
 BEGIN_MESSAGE_MAP(CSplitView, CScrollView)
 //	ON_WM_MBUTTONDOWN()
 ON_WM_LBUTTONDOWN()
+//ON_WM_MOUSEWHEEL()
+ON_WM_MOUSEWHEEL()
 END_MESSAGE_MAP()
 
 
@@ -108,11 +110,6 @@ void CSplitView::OnLButtonDown(UINT nFlags, CPoint point)
 	CMFCSplitScrollDoc* pDoc = GetDocument();
 	pDoc->UpdateAllViews(NULL, HINT_SELECTED_VIEW, this);
 
-	if ((nFlags & MK_CONTROL) == MK_CONTROL) {
-
-		pDoc->m_vCvImg[pDoc->m_nSelectedView].resize(point);
-
-	}
 
 	CScrollView::OnLButtonDown(nFlags, point);
 }
@@ -127,4 +124,24 @@ BOOL CSplitView::PreCreateWindow(CREATESTRUCT& cs)
 		LoadIcon(NULL, IDI_APPLICATION));
 
 	return CScrollView::PreCreateWindow(cs);
+}
+
+
+
+BOOL CSplitView::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+
+	CMFCSplitScrollDoc* pDoc = GetDocument();
+
+
+	if ((nFlags & MK_CONTROL) == MK_CONTROL) {
+
+		pDoc->m_vCvImg[pDoc->m_nSelectedView].resize(pt, zDelta);
+
+		Invalidate();
+	}
+
+
+	return CScrollView::OnMouseWheel(nFlags, zDelta, pt);
 }
