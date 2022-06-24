@@ -27,6 +27,7 @@ BEGIN_MESSAGE_MAP(CMFCSplitScrollView, CScrollView)
 	ON_COMMAND(ID_FILE_PRINT, &CScrollView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CScrollView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CScrollView::OnFilePrintPreview)
+	ON_WM_ERASEBKGND()
 END_MESSAGE_MAP()
 
 // CMFCSplitScrollView 생성/소멸
@@ -114,3 +115,12 @@ CMFCSplitScrollDoc* CMFCSplitScrollView::GetDocument() const // 디버그되지 
 
 
 // CMFCSplitScrollView 메시지 처리기
+
+
+BOOL CMFCSplitScrollView::OnEraseBkgnd(CDC* pDC)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+
+	//return CScrollView::OnEraseBkgnd(pDC);
+	return TRUE;
+}

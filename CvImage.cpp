@@ -2,25 +2,32 @@
 #include "pch.h"
 #include "CvImage.h"
 
+CvImage::CvImage()
+{
+
+}
+
+CvImage::~CvImage()
+{
+
+}
+
 
 void CvImage::imread(CString imgPath) {
 	matImg = cv::imread(std::string(CT2CA(imgPath)));
+
+	cvtColor(matImg, matImg, COLOR_BGR2BGRA);
+
+	bitImg = make_shared<Bitmap>((INT)matImg.size().width, (INT)matImg.size().height, matImg.step,
+		PixelFormat32bppARGB, matImg.data);
 
 	pt = (0, 0);
 	dZoomRate = 1;
 }
 
-
-void CvImage::DrawImage(Graphics& g, CWnd* cwnd) {
+void CvImage::ImgAlignment(CRect& rect) {
 
 	if (!(matImg.empty())) {
-
-		g.TranslateTransform(pt.x, pt.y);
-		g.ScaleTransform(dZoomRate, dZoomRate);
-
-		CRect rect;
-		cwnd->GetClientRect(rect);
-
 
 		float width = rect.Width(), height = rect.Height();
 		float rectRate = width / height;
@@ -40,14 +47,23 @@ void CvImage::DrawImage(Graphics& g, CWnd* cwnd) {
 		else {
 			rect.left = 0; rect.right = (int)width; rect.top = interval_y; rect.bottom = (int)height;
 		}
+	}
+}
 
 
-		cvtColor(matImg, matImg, COLOR_BGR2BGRA);
+void CvImage::DrawImage(Graphics& g, CWnd* cwnd) {
 
-		Bitmap bitmap((INT)matImg.size().width, (INT)matImg.size().height, matImg.step,
-			PixelFormat32bppARGB, matImg.data);
+	if (!(matImg.empty())) {
 
-		g.DrawImage(&bitmap, rect.left, rect.top, rect.right, rect.bottom);
+		g.TranslateTransform(pt.x, pt.y);
+		g.ScaleTransform(dZoomRate, dZoomRate);
+
+		CRect rect;
+		cwnd->GetClientRect(rect);
+
+		ImgAlignment(rect);
+
+		g.DrawImage(bitImg.get(), rect.left, rect.top, rect.right, rect.bottom);
 	}
 }
 
