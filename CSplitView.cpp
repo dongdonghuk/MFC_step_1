@@ -134,9 +134,10 @@ BOOL CSplitView::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 
 	CMFCSplitScrollDoc* pDoc = GetDocument();
 
-	ScreenToClient(&pt);
 
 	if ((nFlags & MK_CONTROL) == MK_CONTROL) {
+
+		ScreenToClient(&pt);
 
 		pDoc->m_vCvImg[pDoc->m_nSelectedView].resize(pt, zDelta);
 

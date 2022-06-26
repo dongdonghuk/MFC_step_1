@@ -28,6 +28,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_COMMAND(IDM_SPLIT_2, &CMainFrame::OnSplit2)
 	ON_COMMAND(IDM_SPLIT_4, &CMainFrame::OnSplit4)
 	ON_WM_SIZE()
+	ON_WM_GETMINMAXINFO()
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -142,6 +143,7 @@ void CMainFrame::OnSplit1()
 	CRect rect;
 	GetClientRect(&rect);
 
+
 	m_wndSplitter.SetColumnInfo(0, rect.right, 50);
 	m_wndSplitter.SetColumnInfo(1, rect.right, 50);
 
@@ -176,14 +178,17 @@ void CMainFrame::OnSplit4()
 {
 	// TODO: 여기에 명령 처리기 코드를 추가합니다.
 
-	CRect rect;
+	CRect rect, tRect, sRect;
 	GetClientRect(&rect);
+
+	m_wndToolBar.GetClientRect(&tRect);
+	m_wndStatusBar.GetClientRect(&sRect);
 
 	m_wndSplitter.SetColumnInfo(0, rect.right / 2, 50);
 	m_wndSplitter.SetColumnInfo(1, rect.right / 2, 50);
 
-	m_wndSplitter.SetRowInfo(0, rect.bottom / 2, 50);
-	m_wndSplitter.SetRowInfo(1, rect.bottom / 2, 50);
+	m_wndSplitter.SetRowInfo(0, (rect.bottom - tRect.Height() - sRect.Height())/ 2, 50);
+	m_wndSplitter.SetRowInfo(1, (rect.bottom - tRect.Height() - sRect.Height())/ 2, 50);
 
 	m_wndSplitter.RecalcLayout();
 
@@ -214,4 +219,14 @@ void CMainFrame::OnSize(UINT nType, int cx, int cy)
 		break;
 
 	}
+}
+
+
+void CMainFrame::OnGetMinMaxInfo(MINMAXINFO* lpMMI)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	lpMMI->ptMinTrackSize.x = 500;
+	lpMMI->ptMinTrackSize.y = 500;
+
+	CFrameWnd::OnGetMinMaxInfo(lpMMI);
 }

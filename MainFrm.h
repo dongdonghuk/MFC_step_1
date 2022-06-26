@@ -51,6 +51,7 @@ public:
 	afx_msg void OnSplit2();
 	afx_msg void OnSplit4();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
+	afx_msg void OnGetMinMaxInfo(MINMAXINFO* lpMMI);
 };
 
 

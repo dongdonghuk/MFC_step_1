@@ -17,7 +17,7 @@ void CvImage::imread(CString imgPath) {
 	matImg = cv::imread(std::string(CT2CA(imgPath)));
 
 	cvtColor(matImg, matImg, COLOR_BGR2BGRA);
-
+	 
 	bitImg = make_shared<Bitmap>((INT)matImg.size().width, (INT)matImg.size().height, matImg.step,
 		PixelFormat32bppARGB, matImg.data);
 
@@ -61,9 +61,19 @@ void CvImage::DrawImage(Graphics& g, CWnd* cwnd) {
 		CRect rect;
 		cwnd->GetClientRect(rect);
 
+		//Gdiplus::Font F(L"Arial", 20, FontStyleRegular, UnitPixel);
+		//PointF P(rect.right * 0.8, rect.bottom * 0.8);
+		//SolidBrush B(Color(0, 0, 255));
+
+		//g.DrawString(L"zoom", -1, &F, P, &B);
+
+
 		ImgAlignment(rect);
 
+
 		g.DrawImage(bitImg.get(), rect.left, rect.top, rect.right, rect.bottom);
+
+
 	}
 }
 
