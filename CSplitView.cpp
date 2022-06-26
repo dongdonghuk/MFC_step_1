@@ -137,9 +137,17 @@ BOOL CSplitView::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 
 	if ((nFlags & MK_CONTROL) == MK_CONTROL) {
 
+		CRect rect;
+		GetClientRect(&rect);
+
 		ScreenToClient(&pt);
 
-		pDoc->m_vCvImg[pDoc->m_nSelectedView].resize(pt, zDelta);
+		CvImage& refCvImg = pDoc->m_vCvImg[pDoc->m_nSelectedView];
+		refCvImg.resize(pt, zDelta);
+
+		SetScrollSizes(MM_TEXT, CSize(rect.Width() * refCvImg.dZoomRate, rect.Height() * refCvImg.dZoomRate));
+
+		//ScrollToPosition(-refCvImg.pt);
 
 		Invalidate();
 	}
